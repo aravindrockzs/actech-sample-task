@@ -1,0 +1,17 @@
+import { useEffect, useState } from "react";
+
+export const useDebouncedSearch = (value, delay = 300) => {
+  const [debouncedVal, setDebouncedVal] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedVal(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value]);
+
+  return [debouncedVal];
+};
