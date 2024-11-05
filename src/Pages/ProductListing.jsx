@@ -45,7 +45,9 @@ export default function ProductListing() {
   }, [debouncedVal]);
 
   useEffect(() => {
-    fetchItems();
+    if (skip === 0) {
+      fetchItems();
+    }
   }, [debouncedVal, skip]);
 
   const handleSearchChange = (e) => {
